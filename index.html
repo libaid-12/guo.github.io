@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>郭哥情感回忆录登录</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+            background-image: url('QQ20241110-142858.png'); /* 添加月亮背景图 */
+            background-size: cover; /* 覆盖整个容器 */
+            background-position: center; /* 背景图居中 */
+        }
+
+        .login-container {
+        background-color: #007bff;
+        color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        margin-bottom: 20px;
+        background-image: url('QQ20241110-142858.png'); /* 添加月亮背景图 */
+        background-size: cover; /* 覆盖整个容器 */
+        background-position: center; /* 背景图居中 */
+        }
+
+
+        /* 以下是新增样式，用于将表单元素居中显示 */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+        input[type="text"],
+        select {
+            width: 100%;
+            max-width: 300px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f4f4f4;
+            color: black;
+        }
+        .quiz-container {
+        background-color: #ffffff; /* 背景颜色 */
+        padding: 20px;
+        border-radius: 8px; /* 边框圆角 */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 阴影 */
+        max-width: 600px;
+        margin: auto;
+        }
+
+        button {
+            width: 100%;
+            max-width: 300px;
+            padding: 10px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+
+        button:hover {
+            background-color: #004085;
+        }
+
+
+       .content {
+            display: none;
+            overflow: auto;
+        }
+
+        .button-container {
+    text-align: center;
+}
+        h1 {
+            color: red;
+            text-align: center;
+        }
+        .dialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 300px;
+            background-image: url('4203.gif_wh300.gif');
+            background-size: cover;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dialog-content {
+            text-align: center;
+            color: #fd1818;
+            font-size: 26px;
+        }
+        .message-text {
+        font-size: 30px; /* 设置你想要的文字大小 */
+        color: rgb(245, 10, 37); /* 如果你也想设置文字颜色 */
+    }
+    </style>
+</head>
+
+<body>
+    <div id="login-container">
+        <h1>郭哥情感回忆录登录</h1>
+        <h2 style="text-align: center; font-size: 24px;">密码为郭哥生日</h2>
+        <form id="loginForm">
+            <label for="username">账号:</label>
+            <input type="text" id="username" value="郭哥" readonly>
+
+            <label for="month">密码（月 - 日）:</label>
+            <select id="month">
+                <option value="">请选择月份</option>
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+            <select id="day">
+                <option value="">请选择日期</option>
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+            </select>
+
+            <button type="button" onclick="login()">登录</button>
+        </form>
+    </div>
+
+    <div class="content" id="content">
+        <h1 style="color: red; text-align: center">郭哥<b>情感</b>回忆录</h1>
+        <h2 style="text-align: center; font-size: 24px;">《第一卷 重生之我是小丑》</h2>
+        <p>迎面走来的是设施第一大帅皮，足够多的感情经历，使他成为情感导师，如果你有任何感情困扰，请致电：521 - 521 - 521</p>
+        <img src="QQ20241110-112326.png" alt="照片被风吹走了" style="width: 200px; height: 150px; display: block; margin: auto">
+        <p>郭哥的传奇故事，那得从他还是个黄毛小子的时候说起。那时的他，顶着一头乱蓬蓬的黄发，就像顶着一片秋天的枯草。但就是这样一个看似不起眼的小子，却有着一颗对世界充满好奇和热情的心。</p>
+        <p>他的第一段感情经历，就像是一场突如其来的暴风雨。那是在学校的操场边，他看到了那个穿着白色连衣裙的女孩，阳光洒在她身上，仿佛给她镀上了一层金边。郭哥的心瞬间就被击中了，他鼓起了所有的勇气，走向那个女孩，结结巴巴地说出了自己的心意。女孩先是一愣，然后捂着嘴笑了起来，也许是被郭哥的真诚所打动，她同意和郭哥先做朋友。</p>
+        <p>从那以后，郭哥像是变了一个人。他开始注重自己的形象，不再穿着邋遢的衣服，每天都会把自己的黄头发梳理得整整齐齐。他努力学习，只为了能在女孩面前表现得更优秀。然而，年少的感情总是充满了波折。随着时间的推移，他们之间的差异逐渐显现出来。</p>
+        <p>有一天，女孩告诉郭哥，她要跟着家人搬到另一个城市了。郭哥感觉自己的世界瞬间崩塌了，他在女孩离开的那天，默默地站在车的角落里，看着女孩上车，泪水在眼眶里打转，却倔强地不肯流下来。这段感情的结束，让郭哥消沉了很长一段时间，但也正是这段经历，让他开始思考爱情的真，也逐渐走上了成为情感导师的道路。</p>
+        <p>经历了这段刻骨铭心的感情后，郭哥明白了爱情不仅仅是甜蜜的瞬间，更是成长和自我认知的过程。他不再那个懵懂的黄毛小子，而是一个懂得珍惜、理解和包容的人。他开始用自己的经历去帮助那些在感情中迷茫的人，让他们明白爱情的美好与复杂。</p>
+        <p>郭哥的故事告诉，每一段感情都是一次成长的机会，无论结局是喜是悲，都能让我们变得更加坚强和成熟。在人生的道路上，我们或许会遇到挫折和困难，但只要我们勇敢地面对，用心去感受，总找到属于自己的幸福和方向。</p>
+        <p>随着岁月的流逝，郭哥的生活也在不断变化。他开始意识到，人生不仅仅是爱情，还有许多值得追求的东西。于是，他将更多的精力投入到自己的事业。他开始创业，凭借着对市场的敏锐洞察和不懈的努力，逐渐在行业中站稳了脚跟。</p>
+        <p>在事业的打拼中，郭哥结识了许多志同道合的朋友，他们探讨人生的意义，分享彼此的经验。在他们的支持和鼓励下，郭哥不仅在事业上取得了成功，也找到了内心的宁静和满足。</p>
+        <p>某天，在一个偶然的机会下，郭哥结了一位同样热爱生活的女孩。她的笑容如阳光般温暖，郭哥被她的乐观和坚韧所吸引。两人很快坠入爱河，在相处的过程中，他们相互扶持，共同成长。</p>
+        <p>这段感情让郭哥明白，真正的爱情不是一味的付出或索取，而是彼此的理解和包容。他和女孩携手走过风风雨雨，彼此的心灵在岁月的洗礼下发贴近。</p>
+        <p>在生活的点滴中，郭哥也逐渐发现，爱情不仅仅是两个人的事，它更是一种责任和承诺。他开始更加关注家庭，努力为自己的爱人和未来的孩子创造一个温而稳定的环境。</p>
+        <p>郭哥的故事就像是一面镜子，映照出每一个在爱情路上前行的人。无论你是初涉情场的青涩少年，还是已经历经风雨的成熟成年人，郭的经历都能为你带来一些启发和思考。</p>
+        <p>在这段回忆录的最后，郭哥想对所有正在追求幸福的人说：爱情是一段旅程，重要的不是终点，而是一路上的风和陪伴在你身边的人。愿每一个人都能在爱情的旅途中找到属于自己的幸福。</p>
+        <p>在陪女朋友备考四六级的两周里，郭哥倾尽全力帮助她复习。每天早上为她准备好早餐，然后一起复习词汇和语法，晚上则陪她做模拟试题。尽管如此，郭哥也没有忘记自己的学习。然而，令人意想不到的是，最终女朋友顺利通过了考试，而郭哥却没能过。这次经历让郭哥意识到，努力和结果并不总是成正比，但他依然为女朋友感到高兴，并决心在下次考试中取得好成绩。</p>
+        <p>郭哥的故事仍在继续，他的生活满了未知的可能性。未来，他将继续用他的智慧和经验去帮助更多的人，成为他们心灵的灯塔，指引他们走向光明的未来。</p>
+        <p>在这个充满挑战与机遇的世界里，郭哥故事无疑是一剂良药，让我们在迷茫时找到方向，在失落时重拾信心。在他的故事中，我们看到了成长的力量和爱的伟大，也看到了一个平凡人如何通过不懈努力，成就不凡的人生。</p>
+        <h1 style="color: red; text-align: center">“课”后习题</h1>
+        <h3 style="text-align: center; font-size: 12px;">注：五道单选题，满分一百分</h3>
+        <div class="quiz-container">
+            <!-- 第一题 -->
+            <div>
+                <h3>1. 郭哥在面对感情失败时，是如何开始自我反思和成长的？</h3>
+                <input type="radio" id="q1a1" name="q1" value="20">
+                <label for="q1a1">他沉溺于悲伤，没有成长</label>
+                <br><input type="radio" id="q1a2" name="q1" value="15">
+                <label for="q1a2">他开始思考爱情的真，逐渐成为情感导师</label>
+                <br><input type="radio" id="q1a3" name="q1" value="10">
+                <label for="q1a3">他放弃了对爱情的追求</label>
+                <br><input type="radio" id="q1a4" name="q1" value="20">
+                <label for="q1a4">他选择逃避现实，不再面对感情问题</label>
+            </div>
+
+            <!-- 第二题 -->
+            <div>
+                <h3>2. 郭哥的故事告诉我们，每一段感情经历都是什么？</h3>
+                <input type="radio" id="q2a1" name="q2" value="20">
+                <label for="q2a1">一次失败的尝试</label>
+                <br><input type="radio" id="q2a2" name="q2" value="5">
+                <label for="q2a2">一次成长的机会</label>
+                <br><input type="radio" id="q2a3" name="q2" value="15">
+                <label for="q2a3">一次浪费时间的过程</label>
+                <br><input type="radio" id="q2a4" name="q2" value="10">
+                <label for="q2a4">一次随意的游戏</label>
+            </div>
+
+            <!-- 第三题 -->
+            <div>
+                <h3>3. 郭哥在事业上的成功，给我们带来什么启示？</h3>
+                <input type="radio" id="q3a1" name="q3" value="5">
+                <label for="q3a1">爱情是唯一的追求</label>
+                <br><input type="radio" id="q3a2" name="q3" value="20">
+                <label for="q3a2">人生不仅仅是爱情，还有事业等其他追求</label>
+                <br><input type="radio" id="q3a3" name="q3" value="5">
+                <label for="q3a3">事业成功不需要努力</label>
+                <br><input type="radio" id="q3a4" name="q3" value="5">
+                <label for="q3a4">只有爱情才能带来真正的幸福</label>
+            </div>
+
+            <!-- 第四题 -->
+            <div>
+                <h3>4. 郭哥在面对生活的变化时，如何调整自己的态度？</h3>
+                <input type="radio" id="q4a1" name="q4" value="5">
+                <label for="q4a1">他总是抱怨生活的不公</label>
+                <br><input type="radio" id="q4a2" name="q4" value="15">
+                <label for="q4a2">他积极面对，不断调整和改进</label>
+                <br><input type="radio" id="q4a3" name="q4" value="20">
+                <label for="q4a3">他选择逃避，不去面对现实</label>
+                <br><input type="radio" id="q4a4" name="q4" value="5">
+                <label for="q4a4">他放弃了对生活的希望</label>
+            </div>
+
+            <!-- 第五题 -->
+            <div>
+                <h3>5. 郭哥的故事如何帮助我们在感情中找到方向？</h3>
+                <input type="radio" id="q5a1" name="q5" value="20">
+                <label for="q5a1">它告诉我们应该避免所有感情问题</label>
+                <br><input type="radio" id="q5a2" name="q5" value="20">
+                <label for="q5a2">它启发我们理解爱情的美好与复杂</label>
+                <br><input type="radio" id="q5a3" name="q5" value="0">
+                <label for="q5a3">它告诉我们感情总是一帆风顺的</label>
+                <br><input type="radio" id="q5a4" name="q5" value="10">
+                <label for="q5a4">它让我们相信只有痛苦没有快乐的感情</label>
+            </div>
+        </div>
+        <div class="button-container">
+            <button type="button" onclick="calculateScore()">提交</button>
+        </div>
+        <div id="scoreDialog" class="dialog" style="display: none;">
+            <div class="dialog-content">
+                <h2>总分</h2>
+                <p class="message-text" id="scoreResult">0</p>
+                <button onclick="closeDialog()">关闭</button>
+            </div>
+        </div>
+        </form>
+        
+    </div>
+
+    <script>
+        function login() {
+        var month = document.getElementById('month').value;
+        var day = document.getElementById('day').value;
+        var password = month + day;
+        var correctPassword = "0115";
+
+        if (password === correctPassword) {
+            document.getElementById('login-container').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+            document.body.style.backgroundImage = 'none'; // 移除背景图
+        } else {
+            alert('密码错误！');
+        }
+        }
+        function calculateScore() {
+        var score = 0;
+        var questions = document.querySelectorAll("input[type=radio]:checked");
+        questions.forEach(function(question) {
+            if (question) {
+                score += parseInt(question.value);
+            }
+        });
+
+    // 根据分数设置不同的文本
+        var message;
+        if (score < 50) {
+            message = "你的总分是：" + score + "。不要让小头控制大头！";
+        } else if (score >= 50 && score < 80) {
+            message = "你的总分是：" + score + "。不错，继续保持！";
+        } else {
+            message = "你的总分是：" + score + "。太棒了，拒绝添狗，从我做起！";
+        }
+
+        document.getElementById('scoreResult').innerHTML = message;
+        document.getElementById('scoreDialog').style.display = 'block'; // 显示对话框
+    }
+
+    function closeDialog() {
+        document.getElementById('scoreDialog').style.display = 'none'; // 隐藏对话框
+    }
+    </script>
+</body>
